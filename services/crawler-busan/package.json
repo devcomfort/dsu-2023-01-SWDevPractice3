@@ -1,8 +1,10 @@
 {
   "name": "crawler-busan",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
+  "description": "",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "scripts": {},
   "keywords": [],
   "author": "",

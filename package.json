@@ -5,5 +5,7 @@
   "type": "module",
   "scripts": {},
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {},
+  "devDependencies": {}
 }

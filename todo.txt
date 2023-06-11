@@ -1,0 +1,1 @@
+- [ ] `crawler-busan`, `crawler-seoul`에는 공통 스키마가 있음, QueryResult, QueryParams 등의 스키마를 `common-crawler-schemes`로 분리해야함 (의존성 주입 및 코드 재사용성 향상 목적)

@@ -1,0 +1,5 @@
+packages:
+  - presentations/**/*
+  # 모놀리식 백엔드 프로젝트
+  - backend
+  - services/**/*

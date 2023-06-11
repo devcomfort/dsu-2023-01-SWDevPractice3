@@ -1,0 +1,21 @@
+### 부산 롯데월드 유실물 센터
+@pageIndex=1
+GET https://adventurebusan.lotteworld.com/kor/customer/lost-property/listPart.do?pageIndex={{pageIndex}}&strtDt=&endDt=&acqrCategCd=&q=
+
+### 검색어: 안경
+@query=안경
+GET https://adventurebusan.lotteworld.com/kor/customer/lost-property/listPart.do?pageIndex=2&strtDt=&endDt=&acqrCategCd=&q={{query}}
+
+### 분류: 귀금속
+@category=A0001
+GET https://adventurebusan.lotteworld.com/kor/customer/lost-property/listPart.do?pageIndex=2&strtDt=&endDt=&acqrCategCd={{category}}&q=
+
+### 기간 검색:
+@startDt=2023-06-01
+@endDt=2023-06-10
+GET https://adventurebusan.lotteworld.com/kor/customer/lost-property/listPart.do?pageIndex=3&strtDt={{startDt}}&endDt={{endDt}}&acqrCategCd=&q=
+
+
+### 본 홈페이지
+### 귀금속 분류와 같은 데이터는 직접 가져와야 합니다
+GET https://adventurebusan.lotteworld.com/kor/customer/lost-property/list.do

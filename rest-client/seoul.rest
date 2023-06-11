@@ -1,0 +1,7 @@
+### 롯데월드 서울 조회
+@pageNo=1
+@queryKeyword=안경
+@categoryID=A2008
+@startDt=2023-06-01
+@endDt=2023-06-11
+https://adventure.lotteworld.com/kor/communication/lost-property/list.do?pageIndex={{pageNo}}&detailsKey=&acqrCategCd={{categoryID}}&strtDt={{startDt}}&endDt={{endDt}}&q={{queryKeyword}}

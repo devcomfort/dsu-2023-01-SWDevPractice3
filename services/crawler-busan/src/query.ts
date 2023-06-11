@@ -151,7 +151,53 @@ const query = async (q: QueryParams): Promise<QueryResult> => {
   };
 };
 
-// TODO: queryAll 함수 추가
-// 정해진 배치를 기준으로 배치만큼의 페이지를 더 이상 결과가 나오지 않을 때까지 자동으로 조회하는 함수
+const queryAll = async (batch: number = 5) => {
+  let results: Lost[] = [];
 
-export { getCategoryEnums, getFoundSpotEnums, singleQuery, query };
+  /** 이전 시도에서 누락된 페이지 인덱스 캐싱 */
+  let rejected_pages: number[] = [];
+  for (let length = 0; ; ) {
+    // 현재 저장된 데이터의 길이 (마지막 인덱스부터 쿼리)
+    const range = new Array(batch).fill(0).map((_, i) => length + i + 1);
+
+    console.log(`range 생성됨: ${range.join(", ")}`);
+    console.log(`rejected: ${rejected_pages.join(", ")}`);
+
+    // 요청 결과를 성공 여부와 함께 반환
+    const responses = await Promise.allSettled(
+      (rejected_pages.length > 0 ? rejected_pages : range).map((i) =>
+        singleQuery({
+          pageNo: i,
+        })
+      )
+    );
+
+    // 성공한 요청만 뽑아서 결과 해석 후 저장
+    const _results = responses.reduce<Lost[]>((acc, cur) => {
+      if (cur.status === "fulfilled") return [...acc, ...cur.value.losts];
+      return acc;
+    }, []);
+
+    results = [...results, ..._results];
+
+    // 실패한 요청은 다시 요청하기 위해 저장
+    rejected_pages = responses.reduce<number[]>((acc, cur, i) => {
+      // NOTE: i가 일반적인 배열의 인덱스, 도메인이 0 ~ batch - 1인 값이기 때문에
+      // queryAll 함수 초반에서처럼 length + i + 1 형태로 다시 연산, 병합함
+      if (cur.status === "rejected") return [...acc, length + i + 1];
+      return acc;
+    }, []);
+
+    // 현재 배치가 끝난 이후, 다음 배치로 이동.
+    if (rejected_pages.length <= 0) length += batch;
+
+    if (_results.length === 0) break;
+  }
+
+  return {
+    losts: results,
+    length: results.length,
+  } as QueryResult;
+};
+
+export { getCategoryEnums, getFoundSpotEnums, singleQuery, query, queryAll };

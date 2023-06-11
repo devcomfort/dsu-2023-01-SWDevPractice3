@@ -1,0 +1,15 @@
+{
+  "name": "crawler-seoul",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "node-fetch": "^3.3.1",
+    "node-html-parser": "^6.1.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}

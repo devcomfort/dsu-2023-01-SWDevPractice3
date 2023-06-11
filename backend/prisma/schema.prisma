@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model losts {
+  lost_id     Int      @id @default(autoincrement())
+  name        String
+  category    String
+  when_found  DateTime
+  where_found String
+  state       String
+  province    String
+  is_created  DateTime @default(now())
+}

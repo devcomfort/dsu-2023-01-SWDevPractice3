@@ -1,0 +1,26 @@
+### 지점 ENUM
+GET http://localhost:8000/enums/province
+
+### 부산 지점 분실물 분류 ENUM 반환
+GET http://localhost:8000/busan/enums/category
+
+### 부산 지점 유실물 발견 지점 ENUM 반환
+GET http://localhost:8000/busan/enums/spot
+
+### 부산 지점 유실물 상태 ENUM 반환
+GET http://localhost:8000/busan/enums/state
+
+### 부산 지점 데이터 쿼리
+GET http://localhost:8000/busan?category=귀금속&startDt=2023-02-03&endDt=2023-03-04
+
+### 서울 지점 분실물 분류 ENUM 반환
+GET http://localhost:8000/seoul/enums/category
+
+### 서울 지점 유실물 발견 지점 ENUM 반환
+GET http://localhost:8000/seoul/enums/spot
+
+### 서울 지점 유실물 상태 ENUM 반환
+GET http://localhost:8000/seoul/enums/state
+
+### 서울 지점 데이터 쿼리
+GET http://localhost:8000/seoul?category=귀금속&startDt=2023-02-03&endDt=2023-03-04

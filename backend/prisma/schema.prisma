@@ -13,7 +13,16 @@ model losts {
   category    String
   when_found  DateTime
   where_found String
-  state       String
-  province    String
+  state       String // 유실물의 현재 상태
+  province    String // 유실물을 관리하고 있는 지점
   is_created  DateTime @default(now())
+}
+
+model subscription {
+  subscription_id Int       @id @default(autoincrement())
+  email           String    @unique
+  name            String
+  category        String?
+  startDt         DateTime?
+  province        String?
 }

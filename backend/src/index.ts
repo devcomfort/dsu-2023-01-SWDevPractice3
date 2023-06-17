@@ -5,11 +5,13 @@ import Logger from "koa-logger";
 import BodyParser from "koa-bodyparser";
 
 import RefreshLostsRouter from "./controllers/refresh-losts.js";
+import QueryLostsRouter from "./controllers/query-losts.js";
 
 const app = new Koa();
 const router = new Router();
 
 router.use(RefreshLostsRouter.routes());
+router.use(QueryLostsRouter.routes());
 
 app.use(router.routes());
 app.use(Logger());

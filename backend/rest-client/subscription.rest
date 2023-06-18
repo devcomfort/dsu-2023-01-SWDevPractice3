@@ -1,0 +1,15 @@
+POST http://localhost/subscription
+Content-Type: application/json
+
+{
+  "email": "kimdonghyun026@gmail.com",
+  "name": "안경"
+}
+
+### 구독자 제거
+DELETE  http://localhost/subscription
+Content-Type: application/json
+
+{
+  "email": "kimdonghyun026@gmail.com"
+}

@@ -1,5 +1,5 @@
 ### 부산 지점 데이터 새로고침
-POST http://localhost:8000/busan
+POST http://localhost/busan
 
 ### 서울 지점 데이터 새로고침
-POST http://localhost:8000/seoul
+POST http://localhost/seoul

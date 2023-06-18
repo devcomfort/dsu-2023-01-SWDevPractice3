@@ -22,6 +22,10 @@ interface CancelSubscriptionQueryParams {
   email: string;
 }
 
+interface ResponseResult {
+  msg: string;
+}
+
 interface ResponseError {
   msg: string;
 }
@@ -128,7 +132,9 @@ router.post("/subscription", async (ctx, next) => {
     return;
   }
 
-  ctx.body = JSON.stringify({});
+  ctx.body = {
+    msg: "성공적으로 등록하였습니다. 이메일을 확인해주세요",
+  } satisfies ResponseResult;
 });
 
 // 구독 정보 수정 라우터
@@ -184,7 +190,7 @@ router.put("/subscription", async (ctx, next) => {
 
   ctx.status = 200;
   ctx.body = {
-    msg: "요청을 올바르게 처리하였습니다",
+    msg: "성공적으로 정보를 수정하였습니다",
   };
 });
 
@@ -238,7 +244,9 @@ router.delete("/subscription", async (ctx, next) => {
     return;
   }
 
-  ctx.body = JSON.stringify({});
+  ctx.body = {
+    msg: "구독자 정보를 성공적으로 제거하였습니다",
+  } satisfies ResponseResult;
 });
 
 // 인증 이메일 수신 인증 라우터

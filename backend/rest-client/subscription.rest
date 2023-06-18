@@ -3,7 +3,8 @@ Content-Type: application/json
 
 {
   "email": "kimdonghyun026@gmail.com",
-  "name": "안경"
+  "name": "안경",
+  "startDt": "2017-12-01T00:00:00.000Z"
 }
 
 ### 구독자 제거

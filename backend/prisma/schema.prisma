@@ -25,4 +25,14 @@ model subscription {
   category        String?
   startDt         DateTime?
   province        String?
+  // 인증 정보
+  is_authorized   Boolean   @default(false)
+}
+
+model authorization_code {
+  auth_id     Int      @id @default(autoincrement())
+  // 인증 코드
+  code        String
+  // 만료 시간 (절대시간)
+  when_expire DateTime
 }

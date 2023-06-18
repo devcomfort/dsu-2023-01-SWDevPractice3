@@ -10,6 +10,10 @@
   "author": "devcomfort",
   "dependencies": {
     "@prisma/client": "4.15.0",
+    "crawler-busan": "workspace:*",
+    "crawler-seoul": "workspace:*",
+    "email-sender": "workspace:*",
+    "joi": "^17.9.2",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-helmet": "^7.0.2",
@@ -18,8 +22,7 @@
     "prisma": "^4.15.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3",
-    "crawler-seoul": "workspace:*",
-    "crawler-busan": "workspace:*"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.6",
@@ -27,6 +30,7 @@
     "@types/koa-helmet": "^6.0.4",
     "@types/koa-logger": "^3.1.2",
     "@types/koa-router": "^7.4.4",
-    "@types/node": "^20.3.0"
+    "@types/node": "^20.3.0",
+    "@types/uuid": "^9.0.2"
   }
 }

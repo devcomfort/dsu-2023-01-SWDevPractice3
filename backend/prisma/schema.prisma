@@ -19,14 +19,15 @@ model losts {
 }
 
 model subscription {
-  subscription_id Int       @id @default(autoincrement())
-  email           String    @unique
-  name            String
-  category        String?
-  startDt         DateTime?
-  province        String?
+  subscription_id    Int                  @id @default(autoincrement())
+  email              String               @unique
+  name               String
+  category           String?
+  startDt            DateTime?
+  province           String?
   // 인증 정보
-  is_authorized   Boolean   @default(false)
+  is_authorized      Boolean              @default(false)
+  authorization_code authorization_code[]
 }
 
 model authorization_code {
@@ -35,4 +36,7 @@ model authorization_code {
   code        String
   // 만료 시간 (절대시간)
   when_expire DateTime
+
+  targetEmail       subscription @relation(fields: [targetEmailString], references: [email])
+  targetEmailString String
 }

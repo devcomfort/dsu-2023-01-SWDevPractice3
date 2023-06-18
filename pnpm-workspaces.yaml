@@ -3,3 +3,5 @@ packages:
   # 모놀리식 백엔드 프로젝트
   - backend
   - services/*
+  # 이메일 라이브러리
+  - email

@@ -5,7 +5,6 @@ import { PrismaClient } from "@prisma/client";
 
 import { sendNewAuthorizationEmail } from "email-sender";
 import { newAuthCode } from "../services/auth-code.js";
-import { chownSync } from "fs";
 
 interface AddSubscriptionQueryParams {
   /** 구독자 이메일 정보 (알림 및 구분용) */
@@ -123,6 +122,11 @@ router.post("/subscription", async (ctx, next) => {
     const _url = ctx.URL;
     _url.pathname = `/auth/${code}`;
     sendNewAuthorizationEmail(_url.toString());
+
+    ctx.status = 200;
+    ctx.body = {
+      msg: "성공적으로 등록하였습니다. 이메일을 확인해주세요",
+    } satisfies ResponseResult;
   } catch (err) {
     console.log(err);
     ctx.status = 503;
@@ -131,10 +135,6 @@ router.post("/subscription", async (ctx, next) => {
     } satisfies ResponseError);
     return;
   }
-
-  ctx.body = {
-    msg: "성공적으로 등록하였습니다. 이메일을 확인해주세요",
-  } satisfies ResponseResult;
 });
 
 // 구독 정보 수정 라우터
@@ -143,10 +143,11 @@ router.put("/subscription", async (ctx, next) => {
 
   const queryValidation = AddSubscriptionSchema.validate(query);
 
+  console.log(query);
+
   // 형태소 검증
   if (queryValidation.error) {
     ctx.status = 400; // Bad Request
-    console.log(queryValidation.value);
     ctx.body = JSON.stringify({
       msg: queryValidation.error.message,
     } satisfies ResponseError);
